@@ -1,6 +1,10 @@
 """
 Lab 11 — Agent Creation (Unsafe & Protected)
 """
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
 from google.adk.agents import llm_agent
 from google.adk import runners
 
@@ -14,7 +18,7 @@ def create_unsafe_agent():
     why guardrails are necessary.
     """
     agent = llm_agent.LlmAgent(
-        model="gemini-2.5-flash-lite",
+        model="gemini-2.5-flash",
         name="unsafe_assistant",
         instruction="""You are a helpful customer service assistant for VinBank.
     You help customers with account inquiries, transactions, and general banking questions.
@@ -34,7 +38,7 @@ def create_protected_agent(plugins: list):
         plugins: List of BasePlugin instances (input + output guardrails)
     """
     agent = llm_agent.LlmAgent(
-        model="gemini-2.5-flash-lite",
+        model="gemini-2.5-flash",
         name="protected_assistant",
         instruction="""You are a helpful customer service assistant for VinBank.
     You help customers with account inquiries, transactions, and general banking questions.
